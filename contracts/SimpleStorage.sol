@@ -2,10 +2,25 @@
 pragma solidity ^0.8.8;
 
 contract SimpleStorage{
-    bool hasFavouriteNumber = true;
-    uint256 favouriteNumber = 5; // can define the bytes in uint -> default 256 bits
-    string favouriteText = "Five";
-    int256 favouriteInt = -5;
-    address myAddress = 0x0000000000000000000000000000000000000000;
-    bytes32 favouriteBytes = "cat"; //0x0000000000000000000000000000000000000000000000000000000000000000;
+    // ? Default value is 0
+    uint256 public favouriteNumber; // ? default is `internal` access specifier
+
+    function store(uint256 _favouriteNumber) public{
+        favouriteNumber = _favouriteNumber;
+        // ? More lines are the more operations
+        // ? More operations means more gas for the transaction
+    }
+
+    // ? view, pure
+    // ? view -> can read values from the contract
+    // ? pure -> can't read values from the contract
+
+    function retrieve() public view returns(uint256){
+        return favouriteNumber;
+    }
+
+    function add() public pure returns(uint256){
+        return (1 + 1);
+    }
+
 }
